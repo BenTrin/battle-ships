@@ -267,32 +267,29 @@ public static class GameResources
 
 	private static void FreeFonts()
 	{
-		//Font obj = default(Font);
-		foreach ( Font obj in _Fonts.Values) {
+		foreach (Font obj in _Fonts.Values) {
 			SwinGame.FreeFont(obj);
 		}
 	}
 
 	private static void FreeImages()
 	{
-		//Bitmap obj = default(Bitmap);
-		foreach ( Bitmap obj in _Images.Values) {
+		foreach (Bitmap obj in _Images.Values) {
 			SwinGame.FreeBitmap(obj);
 		}
 	}
 
 	private static void FreeSounds()
-	{
-		//SoundEffect obj = default(SoundEffect);
-		foreach ( SoundEffect obj in _Sounds.Values) {
+	{		
+		foreach (SoundEffect obj in _Sounds.Values) {
 			Audio.FreeSoundEffect(obj);
 		}
 	}
 
 	private static void FreeMusic()
 	{
-		//Music obj = default(Music);
-		foreach ( Music obj in _Music.Values) {
+
+		foreach (Music obj in _Music.Values) {
 			Audio.FreeMusic(obj);
 		}
 	}
@@ -306,10 +303,3 @@ public static class GameResources
 		SwinGame.ProcessEvents();
 	}
 }
-
-//=======================================================
-//Service provided by Telerik (www.telerik.com)
-//Conversion powered by NRefactory.
-//Twitter: @telerik
-//Facebook: facebook.com/telerik
-//=======================================================

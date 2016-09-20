@@ -284,7 +284,7 @@ public static class GameController
 				MenuController.HandleSetupMenuInput();
 				break;
 			case GameState.Deploying:
-				DeploymnetController.HandleDeploymentInput();
+				DeploymentController.HandleDeploymentInput();
 				break;
 			case GameState.Discovering:
 				DiscoveryController.HandleDiscoveryInput();
@@ -378,10 +378,3 @@ public static class GameController
 	}
 
 }
-
-//=======================================================
-//Service provided by Telerik (www.telerik.com)
-//Conversion powered by NRefactory.
-//Twitter: @telerik
-//Facebook: facebook.com/telerik
-//=======================================================
