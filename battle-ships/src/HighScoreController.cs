@@ -138,7 +138,7 @@ static class HighScoreController
 			if (i < 9) {
 				SwinGame.DrawText(" " + (i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
 			} else {
-				SwinGame.DrawText(i + 1 + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
+				SwinGame.DrawText((i + 1) + ":   " + s.Name + "   " + s.Value, Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_TOP + i * SCORE_GAP);
 			}
 		}
 	}
@@ -155,15 +155,17 @@ static class HighScoreController
 	}
 
 	/// <summary>
-	/// Read the user's name for their highsSwinGame.
+	/// Read the user's name for their highscore.
 	/// </summary>
-	/// <param name="value">the player's sSwinGame.</param>
+	/// <param name="value">the player's score.</param>
 	/// <remarks>
-	/// This verifies if the score is a highsSwinGame.
+	/// This verifies if the score is a highscore.
 	/// </remarks>
 	public static void ReadHighScore(int value)
 	{
 		const int ENTRY_TOP = 500;
+
+        Rectangle scoreInputArea = new Rectangle(); 
 
 		if (_Scores.Count == 0)
 			LoadScores();
@@ -177,8 +179,15 @@ static class HighScoreController
 
 			int x = 0;
 			x = SCORES_LEFT + SwinGame.TextWidth(GameResources.GameFont("Courier"), "Name: ");
+            
+            //Define score input area rectangle paramaters
+            //width and height params are literal pixel values of the area in which the text entry will occur
+            scoreInputArea.X = x;
+            scoreInputArea.Y = ENTRY_TOP;
+            scoreInputArea.Width = 40;
+            scoreInputArea.Height = 30;
 
-			SwinGame.StartReadingText(Color.White, NAME_WIDTH, GameResources.GameFont("Courier"), x, ENTRY_TOP);
+            SwinGame.StartReadingText(Color.White, NAME_WIDTH, GameResources.GameFont("Courier"), scoreInputArea);
 
 			//Read the text from the user
 			while (SwinGame.ReadingText()) {
