@@ -18,6 +18,15 @@ static class HighScoreController
 {
 	private const int NAME_WIDTH = 3;
 
+    private const int BUTTON_WIDTH = 50;
+    private const int BUTTON_HEIGHT = 15;
+    private const int BUTTON_X = 800 - 60;
+    private const int BUTTON_Y = 600 - 40;
+    private const int TEXT_OFFSET_X = 6;
+    private const int TEXT_OFFSET_Y = 1;
+
+    private static readonly Color HIGHLIGHT_COLOR = SwinGame.RGBAColor(1, 57, 86, 255);
+
 	private const int SCORES_LEFT = 490;
 	/// <summary>
 	/// The score structure is used to keep the name and
@@ -126,6 +135,11 @@ static class HighScoreController
 			LoadScores();
 
 		SwinGame.DrawText("   High Scores   ", Color.White, GameResources.GameFont("Courier"), SCORES_LEFT, SCORES_HEADING);
+        SwinGame.DrawText(" Back ", SwinGame.RGBAColor(2, 167, 252, 255), GameResources.GameFont("Menu"), BUTTON_X + TEXT_OFFSET_X, BUTTON_Y + TEXT_OFFSET_Y);
+        if (SwinGame.MouseDown(MouseButton.LeftButton) & UtilityFunctions.IsMouseInRectangle(BUTTON_X, BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT))
+        {
+            SwinGame.DrawRectangle(HIGHLIGHT_COLOR, BUTTON_X, BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT);
+        }
 
 		//For all of the scores
 		int i = 0;
@@ -149,7 +163,7 @@ static class HighScoreController
 	/// <remarks></remarks>
 	public static void HandleHighScoreInput()
 	{
-		if (SwinGame.MouseClicked(MouseButton.LeftButton) || SwinGame.KeyTyped(KeyCode.vk_ESCAPE) || SwinGame.KeyTyped(KeyCode.vk_RETURN)) {
+		if ((UtilityFunctions.IsMouseInRectangle(BUTTON_X, BUTTON_Y, BUTTON_WIDTH, BUTTON_HEIGHT) && SwinGame.MouseClicked(MouseButton.LeftButton)) || SwinGame.KeyTyped(KeyCode.vk_ESCAPE) || SwinGame.KeyTyped(KeyCode.vk_RETURN)) {
 			GameController.EndCurrentState();
 		}
 	}
