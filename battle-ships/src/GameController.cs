@@ -86,7 +86,7 @@ public static class GameController
                 _ai = new AIEasyPlayer(_theGame);
                 break;
             default:
-				_ai = new AIEasyPlayer(_theGame);
+                _ai = new AIEasyPlayer(_theGame);
 				break;
 		}
 
@@ -379,5 +379,25 @@ public static class GameController
 	{
 		_aiSetting = setting;
 	}
+
+    /// <summary>
+    /// Returns the current difficulty setting of the game.
+    /// </summary>
+    /// <returns></returns>
+    public static string GetDifficulty()
+    {
+        switch(_aiSetting)
+        {
+            case AIOption.Medium:
+                return "Medium";
+                break;
+            case AIOption.Hard:
+                return "Hard";
+                break;
+            default:
+                return "Easy";
+                break;
+        }
+    }
 
 }
