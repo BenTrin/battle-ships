@@ -74,21 +74,7 @@ public static class GameController
 		//Create the game
 		_theGame = new BattleShipsGame();
 
-		//create the players
-		switch (_aiSetting) {
-			case AIOption.Medium:
-				_ai = new AIMediumPlayer(_theGame);
-				break;
-			case AIOption.Hard:
-				_ai = new AIHardPlayer(_theGame);
-				break;
-            case AIOption.Easy:
-                _ai = new AIEasyPlayer(_theGame);
-                break;
-            default:
-                _ai = new AIEasyPlayer(_theGame);
-				break;
-		}
+        CreateAI(_aiSetting, ref _ai, _theGame);
 
 		_human = new Player(_theGame);
 
@@ -98,6 +84,23 @@ public static class GameController
 
 		AddNewState(GameState.Deploying);
 	}
+
+    public static void CreateAI(AIOption difficulty, ref AIPlayer ai, BattleShipsGame theGame)
+    {
+        //create the players
+        switch (difficulty)
+        {
+            case AIOption.Medium:
+                ai = new AIMediumPlayer(theGame);
+                break;
+            case AIOption.Hard:
+                ai = new AIHardPlayer(theGame);
+                break;
+            default:
+                ai = new AIEasyPlayer(theGame);
+                break;
+        }
+    }
 
 	/// <summary>
 	/// Stops listening to the old game once a new game is started
@@ -399,5 +402,4 @@ public static class GameController
                 break;
         }
     }
-
 }
