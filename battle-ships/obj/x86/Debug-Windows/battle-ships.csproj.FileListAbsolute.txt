@@ -92,3 +92,4 @@ E:\USB\DevProject1\battle-ships\battle-ships\bin\Debug\Resources\SwinGame.icns
 E:\USB\DevProject1\battle-ships\battle-ships\bin\Debug\Resources\SwinGame.ico
 E:\USB\DevProject1\battle-ships\battle-ships\bin\Debug\MyGame.exe
 E:\USB\DevProject1\battle-ships\battle-ships\bin\Debug\SwinGame.dll
+E:\USB\DevProject1\battle-ships\battle-ships\obj\x86\Debug-Windows\battle-ships.csprojResolveAssemblyReference.cache
