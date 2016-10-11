@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\GameControllerTests.cs" />
+    <Compile Include="src\Model\SeaGridTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\battle-ships\battle-ships.csproj">
