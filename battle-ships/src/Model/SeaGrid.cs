@@ -14,13 +14,15 @@ using System.Diagnostics;
 /// mask the position of the ships.
 /// </remarks>
 public class SeaGrid : ISeaGrid
-{
+{ 
 
 	private const int _WIDTH = 10;
 
 	private const int _HEIGHT = 10;
+    private Tile[,] _GameTilesBackup;
 	private Tile[,] _GameTiles;
 	private Dictionary<ShipName, Ship> _Ships;
+    private Ship lastShip;
 
 	private int _ShipsKilled = 0;
 	/// <summary>
@@ -92,6 +94,7 @@ public class SeaGrid : ISeaGrid
 				_GameTiles[i, j] = new Tile(i, j, null);
 			}
 		}
+        _GameTilesBackup = _GameTiles;
 
 		_Ships = ships;
 	}
@@ -105,6 +108,7 @@ public class SeaGrid : ISeaGrid
 	/// <param name="direction">the direction the ship is going</param>
 	public void MoveShip(int row, int col, ShipName ship, Direction direction)
 	{
+        _GameTilesBackup = _GameTiles;
 		Ship newShip = _Ships[ship];
 		newShip.Remove();
 		AddShip(row, col, direction, newShip);
@@ -149,8 +153,10 @@ public class SeaGrid : ISeaGrid
 
 			newShip.Deployed(direction, row, col);
 		} catch (Exception e) {
-			newShip.Remove();
-			//if fails remove the ship
+            //Dissapearing ship bug, in the case of an exception the ship was removed.
+            //Now instead we restore game tiles to how they were.
+            //if fails restore gametiles to how they were
+            _GameTiles = _GameTilesBackup;
 			throw new ApplicationException(e.Message);
 
 		} finally {
