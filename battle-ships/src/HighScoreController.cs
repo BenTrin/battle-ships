@@ -78,6 +78,7 @@ static class HighScoreController
 		int numScores = 0;
 		numScores = Convert.ToInt32(input.ReadLine());
 
+		//Clears the list of scores
 		_Scores.Clear();
 
 		int i = 0;
@@ -213,6 +214,7 @@ static class HighScoreController
 				SwinGame.RefreshScreen();
 			}
 
+			//Handles high score naming
 			s.Name = SwinGame.TextReadAsASCII();
 
 			if (s.Name.Length < 3) {

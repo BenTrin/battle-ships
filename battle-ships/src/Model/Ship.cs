@@ -65,14 +65,17 @@ public class Ship
 		get { return _row; }
 	}
 
+	//Column location of the ship
 	public int Column {
 		get { return _col; }
 	}
 
+	//Returns the orientation of the ship, either LeftRight or UpDown
 	public Direction Direction {
 		get { return _direction; }
 	}
 
+	//Constructor
 	public Ship(ShipName ship)
 	{
 		_shipName = ship;
@@ -102,6 +105,7 @@ public class Ship
 		_tiles.Clear();
 	}
 
+	//Handles the adding and tracking of damage done to a ship
 	public void Hit()
 	{
 		_hitsTaken = _hitsTaken + 1;
@@ -115,6 +119,7 @@ public class Ship
 		get { return _tiles.Count > 0; }
 	}
 
+	//Returns true if the number of hits is equal to the size of the ship, determines whether or not the ship has been destroyed
 	public bool IsDestroyed {
 		get { return Hits == Size; }
 	}

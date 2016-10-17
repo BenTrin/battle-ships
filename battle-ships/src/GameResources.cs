@@ -9,7 +9,7 @@ using SwinGameSDK;
 
 public static class GameResources
 {
-
+	// loads all the fonts used
 	private static void LoadFonts()
 	{
 		NewFont("ArialLarge", "arial.ttf", 80);
@@ -18,6 +18,7 @@ public static class GameResources
 		NewFont("Menu", "ffaccess.ttf", 8);
 	}
 
+	// Loads all the images used
 	private static void LoadImages()
 	{
 		//Backgrounds
@@ -45,6 +46,7 @@ public static class GameResources
 
 	}
 
+	//Loads all the sounds used
 	private static void LoadSounds()
 	{
 		NewSound("Error", "error.wav");
@@ -56,6 +58,7 @@ public static class GameResources
 		NewSound("Lose", "lose.wav");
 	}
 
+	//loads all the music used
 	private static void LoadMusic()
 	{
 		NewMusic("Background", "horrordrone.mp3");
@@ -156,6 +159,7 @@ public static class GameResources
 		EndLoadingScreen(width, height);
 	}
 
+	//Displays a loading screen to the user
 	private static void ShowLoadingScreen()
 	{
 		_Background = SwinGame.LoadBitmap(SwinGame.PathToResource("SplashBack.png", ResourceKind.BitmapResource));
@@ -173,6 +177,7 @@ public static class GameResources
 		PlaySwinGameIntro();
 	}
 
+	//Displays the SwinGame introduction video to the user
 	private static void PlaySwinGameIntro()
 	{
 		const int ANI_X = 143;
@@ -220,6 +225,7 @@ public static class GameResources
 		SwinGame.ProcessEvents();
 	}
 
+	//Handles the closing and end of the loading screen
 	private static void EndLoadingScreen(int width, int height)
 	{
 		SwinGame.ProcessEvents();
@@ -265,6 +271,7 @@ public static class GameResources
 		_Music.Add(musicName, Audio.LoadMusic(SwinGame.PathToResource(filename, ResourceKind.SoundResource)));
 	}
 
+	//Frees the font resources
 	private static void FreeFonts()
 	{
 		foreach (Font obj in _Fonts.Values) {
@@ -272,6 +279,7 @@ public static class GameResources
 		}
 	}
 
+	//Frees the image resources
 	private static void FreeImages()
 	{
 		foreach (Bitmap obj in _Images.Values) {
@@ -279,6 +287,7 @@ public static class GameResources
 		}
 	}
 
+	//Frees the sound resources
 	private static void FreeSounds()
 	{		
 		foreach (SoundEffect obj in _Sounds.Values) {
@@ -286,6 +295,7 @@ public static class GameResources
 		}
 	}
 
+	//Frees the music resources
 	private static void FreeMusic()
 	{
 
@@ -294,6 +304,7 @@ public static class GameResources
 		}
 	}
 
+	//Frees all of the resources
 	public static void FreeResources()
 	{
 		FreeFonts();
