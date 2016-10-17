@@ -1,4 +1,4 @@
-﻿<Properties>
+﻿<Properties StartupItem="battle-ships.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug-Windows|x86" />
   <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
